@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>练习：模拟bootstrap中的accordion完成自定义accordion指令</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div ng-app="app">
+
+		<div class="container">
+			<div ng-controller="firstController">
+				<kittencup-group>
+					<kittencup-collapse ng-repeat="collapse in data" heading="{{collapse.title}}">
+						{{collapse.content}}
+					</kittencup-collapse>
+				</kittencup-group>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

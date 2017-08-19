@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>多个控制器内数据共享</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="firstController">
+			first.data: <input type="text" ng-model="data.name" /><br/>
+			first.Data: <input type="text" ng-model="Data.message"><br/>
+			<p>first.name:{{data.name}}</p>
+			<p>first.message:{{Data.message}}</p>
+		</div>
+		<hr/>
+		<div ng-controller="secondController">
+			<p>
+				second.name:{{data.name}}<br/>
+				second.message:{{Data.message}}
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

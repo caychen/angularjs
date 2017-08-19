@@ -1,0 +1,15 @@
+ng提供服务的过程涉及依赖注入机制。
+
+angular是用$provide对象来实现自动依赖注入机制，注入机制通过调用一个$provide的$get()方法，把得到的对象作为参数进行相关调用。
+
+$provide.provider是一种定义服务的方法，$provide还提供了很多简单的方法，直接被module所引用。
+
+$provide.factory:
+	factory方法直接把一个函数当作是一个对象的$get()方法
+	返回的内容可以是任何类型。
+
+$provide.service:
+	和factory类似，但是返回的内容必须是对象。
+
+自定义的Service需要写在内置的Service后面。
+内置的Service命名以$符号开头，自定义的Service应该避免$

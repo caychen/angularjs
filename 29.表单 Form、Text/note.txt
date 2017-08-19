@@ -1,0 +1,15 @@
+ng-model：绑定数据
+ng-required：是否必填
+ng-minlength：最小长度
+ng-maxlength：最大长度
+min：最小
+max：最大
+
+formName.inputFieldName.$pristine:字段是否未更改
+formName.inputFieldName.$dirty:字段是否更改
+formName.inputFieldName.$valid:字段有效
+formName.inputFieldName.$invalid:字段无效
+formName.inputFieldName.$error:字段错误信息
+formName.inputFieldName.$touched:该表单被点击过，即得到过焦点
+
+$setPristine：将表单复位到原始状态，class，$dirty，$pristine

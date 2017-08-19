@@ -1,0 +1,75 @@
+指令的定义：
+	module.directive(name, directiveFactory)
+
+	$compileProvider.directive()
+
+指令的名字：
+	1、请不要使用ng为指令命名，这样可能会和angular内置指令冲突;
+	2、如果指令的名字为xxx-yyy，在设置指令的名字时应为xxxYyy驼峰式声明法。
+
+指令定义选项：
+	priority:设置指令在模版中执行顺序，顺序是相对于元素上其他执行而言，默认为0，从大到小的顺序依次执行
+		注意：ng-repeat的priority为1000
+
+	terminal:是否以当前指令的权重为结束界限。如果这值设置为true，则节点中权重小于当前指令的其他指令不会被执行。相同权重的同样也会执行。
+
+	scope:
+
+	controller:
+
+	controllerAs:
+
+	require:
+
+	restrict:指令在模版中的使用方式
+		如果打算支持IE8, 请使用基于属性和样式类的指令
+		可以有4种风格任意组合，如果忽略restrict，则默认为A
+			字母		风格			实例
+			A 			属性			<span my-dir="exp"></span>
+			C 			样式类			<span class="mydir:exp;"></span>
+			E 			元素(标签)		<my-dir></my-dir>
+			M 			注释			<!-- directive:my-dir exp -->
+
+	template:模版内容，
+		注意：模版内容最外层尽量使用标签
+		这个内容会根据replace参数的设置替换节点(replace:true)或只替换节点内容(replace:false)
+
+	templateUrl:加载模版所要使用的url,
+		模版内的angular表达式同样适用，
+		模版内容最外层尽量使用标签
+		也可以加载当前模版内对应的
+			<script type="text/ng-template" id="customTags2">
+				<div>
+					hello {{name}}
+				</div>
+			</script>
+			在js中的使用templateUrl:'customTags2'
+
+	replace:
+		如果此设置为true，则会替换指令所在的元素；如果为false或者不指定，则把当前指令追加到所在元素内部。
+
+	transclude:指令元素中的原来的子节点移动到新模版内部
+		当设为true，指令会删掉原来的内容，然后在使用的模版中用ng-transclude指令进行重新插入。
+
+	compile:function(tElement, tAttrs, transclude)
+		参数：
+			tElement：angularjs内置的jQuery对象
+			tAttrs：对象拥有的属性
+		用来对模版自身进行转换，仅仅在编译阶段运行一次；
+		compile中直接返回的函数是postLink，表示link参数需要执行的函数；也可以返回一个对象,里面包含pre和post两个link函数
+		当定义了compile参数时，将无视link参数，因为compile里返回的就是该指令需要执行的link函数。
+
+	link:function(scope, iElement, iAttrs, controller)
+		scope绑定和事件绑定，如果定义了compile方法，则link可以不再定义，因为compile方法返回的就是link函数;
+		link函数负责在模型和视图之间进行动态关联，对于每个指令的每个实例，link函数都会执行一次。
+
+
+AngularJS指令编译三阶段：
+	1、标准浏览器API转化
+		将html转化为dom，所以自定义的html标签必须符合html的格式。
+
+	2、Angular compile
+		搜索匹配directive，按照priority排序，并执行directive上的compile方法。
+
+	3、Angular link
+		执行directive上的link方法，进行scope绑定及事件绑定。

@@ -1,0 +1,17 @@
+Angular过滤器：
+	是用于对数据进行格式化，或者筛选的函数，可以直接在模块中通过一种语法使用
+
+	{{expression | filter}}
+	{{expression | filter1 | filter2}}
+	{{expression | filter1:param,... }}
+
+过滤器种类：
+	number
+	currency
+	date
+	json
+	limitTo
+	lowercase
+	uppercase
+	filter(string | function | object)
+	orderBy(string | function | object)

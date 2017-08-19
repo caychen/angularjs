@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>多个控制器</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="firstController">
+			<input type="text" ng-model="name" />
+
+			<!-- 如果在secondController方法里未设置name属性，则默认会向firstController中查找name属性，但是一旦修改了secondController里的name所在的input标签，则会在secondController的$scope中创建了一个新的name属性，则下次无论修改哪个input标签，都不会影响对方的name属性 -->
+			<div ng-controller="secondController">
+				<input type="text" ng-model="name" />
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

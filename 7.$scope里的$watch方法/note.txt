@@ -1,0 +1,9 @@
+$watch
+1、在digest执行时，如果watch观察的value与上次执行时不一样时，就会被触发。
+
+2、在angularjs内部的watch实现了页面随model的及时更新。
+
+3、$watch(watchFn, watchAction, deepWatch):
+	watchFn:angular表达式或函数的字符串
+	watchAction(newValue, oldValue,scope):watchFn发生变化会被调用
+	deepWatch:可选的布尔值命令检查被监控的对象的每一个属性是否发生变化。

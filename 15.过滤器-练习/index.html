@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>过滤器-练习</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+	<<style type="text/css" media="screen">
+		.orderColor{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="product">
+		<div class="container" ng-controller="productController">
+			<nav class="navbar navbar-default">
+				<form class="navbar-form">
+					<div class="form-group">
+						<input class="form-control" ng-model="search" placeholder="Search" />
+					</div>
+				</form>
+			</nav>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<!-- ng-class表示如果order===''为真，则添加class='dropup',否则不添加class='dropup' -->
+						<th ng-class="{dropup: order === ''}" ng-click="changeOrder('id')">
+							产品编号<span ng-class="{orderColor: orderByType === 'id'}" class="caret"></span>
+						</th>
+						<th  ng-class="{dropup:order === ''}" ng-click="changeOrder('name')">
+							产品名称<span ng-class="{orderColor: orderByType === 'name'}"  class="caret"></span>
+						</th>
+						<th  ng-class="{dropup:order === ''}" ng-click="changeOrder('price')">
+							产品价钱<span ng-class="{orderColor: orderByType === 'price'}"  class="caret"></span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- 在遍历productData的时候，并加以过滤 -->
+					<!-- 只要含有search指定的字符，则保留 -->
+					<tr ng-repeat="product in productData | filter: search | orderBy: order + orderByType">
+
+					<!-- 只过滤id中含有search指定的字符 -->
+					<!-- <tr ng-repeat="product in productData | filter: {id:search}"> -->
+						<td>{{product.id}}</td>
+						<td>{{product.name}}</td>
+						<td>{{product.price | currency : 'RMB'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+自定义过滤器：
+	方法一：使用$filterProvider.register('', function(){});
+		在module中依赖注入$filterProvider:
+			//注册过滤器,函数内部返回一个函数,内部函数返回满足条件的数据
+			$filterProvider.register('filterAge', function(){
+				return function(users){
+					var arr = [];
+					angular.forEach(users, function(user, index){
+						if(user.age > 20){
+							arr.push(user);
+						}
+					});
+					return arr;
+				};
+			});
+
+	方法二：使用module对象的filter方法
+		module.filter('filterCity', function(){
+			return function(users){
+				var arr = [];
+				angular.forEach(users, function(user, index){
+					if(user.city === '苏州')
+						arr.push(user);
+				});
+				return arr;
+			}
+		}

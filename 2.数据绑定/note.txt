@@ -1,0 +1,19 @@
+数据绑定：mvvm
+	数据绑定可以自动将model和view间的数据进行同步。
+
+	Angular实现数据绑定的方式，可以把model当作程序中唯一可信的数据来源。
+	view始终是model的投影，当model发生变化时，会自动反映到view上。
+
+依赖注入：
+	依赖注入是种软件设计模式，用来处理代码的依赖关系。
+	Angular的依赖注入只是简单的获取它所需要的东西，而不需要创建那些他们所依赖的东西。
+
+Angular表达式：
+	通过$parse服务解析进行
+
+与JavaScript表达式的区别：
+	1、属性求值：所有属性的求值是对于$scope，而JavaScript是对于window对象的
+	2、宽容：表达式求值，对于undefine和null，angular是宽容的，当JavaScript会产生NullPointerExceptions
+	3、没有流程控制语句：在表达式里，不能做以下任何的事：
+		条件分支，循环，抛出异常等
+	4、过滤器：可以将表达式的值传入到过滤器链中。

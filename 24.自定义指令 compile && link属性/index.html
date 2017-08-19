@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义指令 transclude、priority、terminal属性</title>
+	
+</head>
+<body>
+	<div ng-app="app">
+		<custom-tags>原始数据</custom-tags>
+
+		<script type="text/ng-template" id="customTags2">
+			<div>
+				<!-- 需要外部标签 -->
+				hello {{name}}
+			</div>
+		</script>
+
+		<div ng-controller="firstController">
+			<div custom-tags2>32323</div>
+		</div>
+
+		<div custom-tags3 custom-tags4>
+			
+		</div>
+
+		<hr/>
+		<div ng-controller="secondController">
+
+			<!-- 	
+				1、div转换为dom结构
+				2、默认的优先级为0，优先级高的先执行，如果优先级相同，则哪个先定义就先使用
+				3、执行指令上的compile方法
+			 -->
+			<div directive1 directive2>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

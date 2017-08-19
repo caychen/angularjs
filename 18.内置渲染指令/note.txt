@@ -1,0 +1,50 @@
+指令：
+	可以利用指令来扩展HTML标签，增加声明式语法来实现想做的任何事，可以对应用有特殊意义的元素和属性来替换一般的HTML标签
+
+	angular也内置了很多指令，ng-app、ng-controller
+
+指令和HTML校验：
+	angular内置指令的语法，以ng开始，代表angular命名空间，连接符后面的内容代表指令的名称
+
+	指令的语法在很多html校验规则中是不合法的，angular提供了多种调用指令的方法，可以顺利通过不同校验的规则。
+
+	校验器：	格式：					示例：
+	none		namespace-name			ng-bind
+	xml			namespace:name 			ng:bind
+	html5		data-namespace-name		data-ng-bind
+	xhtml		x-namespace-name		x-ng-bind
+
+渲染指令：
+	ng-init
+	ng-bind
+	ng-repeat
+		$index:当前索引
+		$first:是否是头元素
+		$middle:是否是非头非尾元素
+		$last:是否是尾元素
+	ng-include
+	ng-bind-template
+
+事件指令：
+	ng-change
+	ng-click
+	ng-dbclick
+	ng-mousedown
+	ng-mouseenter
+	ng-mouseleave
+	ng-mousemove
+	ng-mouseover
+	ng-mouseup
+	ng-submit
+
+节点指令；
+	ng-style
+	ng-class
+	ng-class-even
+	ng-class-odd
+	ng-show
+	ng-hide
+	ng-switch
+	ng-src
+	ng-href
+	ng-if

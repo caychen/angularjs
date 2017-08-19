@@ -1,0 +1,29 @@
+ng-model：绑定数据
+ng-required：是否必填
+ng-minlength：最小长度
+ng-maxlength：最大长度
+min：最小
+max：最大
+
+formName.inputFieldName.$pristine:字段是否未更改
+formName.inputFieldName.$dirty:字段是否更改
+formName.inputFieldName.$valid:字段有效
+formName.inputFieldName.$invalid:字段无效
+formName.inputFieldName.$error:字段错误信息
+
+$setPristine：将表单复位到原始状态，class，$dirty，$pristine
+
+ngModel里的属性
+	$parsers 保存了从viewValue想moduleValue绑定过程中的处理函数，它们将来会一次执行
+
+	$formatters 保存的是从modelValue向viewValue绑定过程中的处理函数
+
+	$setViewValue 当view发生了某件事情时，从view向model绑定调用$setViewValue把viewValue保存下来
+
+	$render 当模型发生变化时，应该怎么去更新视图，从model向view绑定，调用ctrl.$render方法，将viewValue渲染到页面上
+
+	$setValidity 设置验证结果
+
+	$viewValue 视图的值
+
+	$modelValue 模型里的值

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义指令 scope 属性</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="firstController">
+			<div book-list for-age="age" for-name="{{name}}" btn-add-ex="btnAddEx();"></div>
+
+			<input ng-model="age" />
+			<input ng-model="name" />
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

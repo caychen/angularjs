@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div ng-app="MyApp">
+    <div class="container" ng-controller="MyController">
+        <div class="my-info">我的名字是：<span ng-bind="name"></span>
+
+            <br/>我的年龄是：<span ng-bind="age"></span>
+            <br />
+        </div>
+        <div class="my-directive" my-directive my-name="{{name}}" age="age"  change-my-age="changeAge()"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+<script type="text/javascript">
+	angular.module("MyApp", [])
+    .controller("MyController", function ($scope) {
+	    $scope.name = "dreamapple";
+	    $scope.age = 20;
+	    $scope.changeAge = function(){
+	        $scope.age = 0;
+	    }
+	})
+	
+    .directive("myDirective", function () {
+    var obj = {
+        restrict: "AE",
+        scope: {
+            name: '@myName',
+            age: '=',
+            changeAge: '&changeMyAge'
+        },
+        replace: true,
+        template: "<div class='my-directive'>" +
+            "<h3>下面部分是我们创建的指令生成的</h3>" +
+            "我的名字是：<span ng-bind='name'></span><br/>" +
+            "我的年龄是：<span ng-bind='age'></span><br/>" +
+            "在这里修改名字：<input type='text' ng-model='name'><br/>" +
+            "<button ng-click='changeAge()'>修改年龄</button>" +
+            " </div>"
+    }
+    return obj;
+});
+
+
+</script>
+</body>
+</html>

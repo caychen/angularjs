@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+</head>
+<body ng-app="cartApp">
+	<div class="container" ng-controller="cartController">
+		
+		<table class="table table-striped table-hover" ng-show="carts.length">
+			<thead>
+				<tr style="background-color: yellow;">
+					<th>产品编号</th>
+					<th>产品名字</th>
+					<th>购物数量</th>
+					<th>购物单价</th>
+					<th>购物总价</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cart in carts">
+					<td>{{cart.id}}</td>
+					<td>{{cart.name}}</td>
+					<td>
+						<button class="btn btn-primary" ng-click="reduce(cart.id)">-</button>
+						<input type="text" ng-model="cart.count" value="{{cart.count}}"/>
+						<button class="btn btn-primary" ng-click="add(cart.id)">+</button>
+					</td>
+					<td>{{cart.price | currency : 'RMB '}}</td>
+					<td>{{cart.price * cart.count | currency : 'RMB '}}</td>
+					<td>
+						<button type="button" class="btn btn-danger" ng-click="remove(cart.id)">移除</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>总购买数量</td>
+					<td>{{totalCount()}}</td>
+					<td>总购买价</td>
+					<td>{{totalPrice() | currency : 'RMB '}}</td>
+					<td>
+						<!-- ng-click="carts = {}" 即会找$scope下的carts，然后将carts赋为空对象 -->
+						<button type="button" class="btn btn-danger" ng-click="carts = {}">清空</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- 同<p ng-show="!carts.length">购物车为空！</p> -->
+		<!-- 对于ng-show/ng-hide:只要表达式为真，则进行show/hide -->
+		<p ng-hide="carts.length">购物车为空！</p>
+
+	</div>
+	<script type="text/javascript" src="../jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

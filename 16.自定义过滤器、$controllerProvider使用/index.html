@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义过滤器、$controllerProvider使用</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="firstController">
+			<ul>
+				<!-- 无过滤器 -->
+				<li ng-repeat="user in users">
+					{{user.name}}
+					{{user.age}}
+					{{user.city}}
+					{{user.postcode}}
+				</li>
+			</ul>
+			<hr/>
+			<ul>
+				<!-- 单个过滤器 -->
+				<li ng-repeat="user in users | filterAge">
+					{{user.name}}
+					{{user.age}}
+					{{user.city}}
+					{{user.postcode}}
+				</li>
+			</ul>
+			<hr/>
+			<ul>
+				<!-- 多个过滤器 -->
+				<li ng-repeat="user in users | filterAge | filterPostCode1">
+					{{user.name}}
+					{{user.age}}
+					{{user.city}}
+					{{user.postcode}}
+				</li>
+			</ul>
+			<hr/>
+			<ul>
+				<!-- 带有参数的过滤器 -->
+				<li ng-repeat="user in users | filterAge | filterCity2 : {city:'南京'}">
+					{{user.name}}
+					{{user.age}}
+					{{user.city}}
+					{{user.postcode}}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>过滤器 number、currency、date</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="firstController">
+			<!-- number:表示每三位进行分隔 -->
+			<p>{{123456789 | number}}</p><!-- 123,456,789 -->
+
+			<!-- number:3 :表示保留三位有效数字 -->
+			<p>{{1234.56789 | number:3}}</p><!-- 1,234.568 -->
+
+			<!-- 货币，默认为美元符号 -->
+			<p>{{999999| currency}}</p><!-- $999,999.00 -->
+
+			<!-- 自定义货币前缀 -->
+			<p>{{999999| currency:'RMB'}}</p><!-- RMB999,999.00 -->
+
+			<!-- 默认的日期格式 -->
+			<p>{{today}}</p>
+
+			<!-- 简单的日期格式 -->
+			<p>{{today | date}}</p>
+
+			<!-- 自定义日期格式 -->
+			<p>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+
+			<!-- 'yyyy': 4 digit representation of year (e.g. AD 1 => 0001, AD 2010 => 2010)
+				'yy': 2 digit representation of year, padded (00-99). (e.g. AD 2001 => 01, AD 2010 => 10)
+				'y': 1 digit representation of year, e.g. (AD 1 => 1, AD 199 => 199)
+				'MMMM': Month in year (January-December)
+				'MMM': Month in year (Jan-Dec)
+				'MM': Month in year, padded (01-12)
+				'M': Month in year (1-12)
+				'LLLL': Stand-alone month in year (January-December)
+				'dd': Day in month, padded (01-31)
+				'd': Day in month (1-31)
+				'EEEE': Day in Week,(Sunday-Saturday)
+				'EEE': Day in Week, (Sun-Sat)
+				'HH': Hour in day, padded (00-23)
+				'H': Hour in day (0-23)
+				'hh': Hour in AM/PM, padded (01-12)
+				'h': Hour in AM/PM, (1-12)
+				'mm': Minute in hour, padded (00-59)
+				'm': Minute in hour (0-59)
+				'ss': Second in minute, padded (00-59)
+				's': Second in minute (0-59)
+				'sss': Millisecond in second, padded (000-999)
+				'a': AM/PM marker
+				'Z': 4 digit (+sign) representation of the timezone offset (-1200-+1200)
+				'ww': Week of year, padded (00-53). Week 01 is the week with the first Thursday of the year
+				'w': Week of year (0-53). Week 1 is the week with the first Thursday of the year
+				'G', 'GG', 'GGG': The abbreviated form of the era string (e.g. 'AD')
+				'GGGG': The long form of the era string (e.g. 'Anno Domini')
+
+				'medium': equivalent to 'MMM d, y h:mm:ss a' for en_US locale (e.g. Sep 3, 2010 12:05:08 PM)
+
+				'short': equivalent to 'M/d/yy h:mm a' for en_US locale (e.g. 9/3/10 12:05 PM)
+				'fullDate': equivalent to 'EEEE, MMMM d, y' for en_US locale (e.g. Friday, September 3, 2010)
+				'longDate': equivalent to 'MMMM d, y' for en_US locale (e.g. September 3, 2010)
+				'mediumDate': equivalent to 'MMM d, y' for en_US locale (e.g. Sep 3, 2010)
+				'shortDate': equivalent to 'M/d/yy' for en_US locale (e.g. 9/3/10)
+				'mediumTime': equivalent to 'h:mm:ss a' for en_US locale (e.g. 12:05:08 PM)
+				'shortTime': equivalent to 'h:mm a' for en_US locale (e.g. 12:05 PM)
+			 -->
+			<hr/>
+			<p>
+				Year:
+				{{today | date: 'y'}},<!--四位年-->
+				{{today | date: 'yy'}},<!--后两位年-->
+				{{today | date: 'yyyy'}}<!--四位年-->
+
+			</p>
+			<p>
+				Month:
+				{{today | date: 'M'}},<!--月份-->
+				{{today | date: 'MM'}},<!--两位月，不足补0-->
+				{{today | date: 'MMM'}},<!--月份英文简写-->
+				{{today | date: 'MMMM'}}<!--月份英文-->
+			</p>
+			<p>
+				Day:
+				{{today | date: 'd'}},<!--日期-->
+				{{today | date: 'dd'}},<!--在本月中的日期-->
+				星期{{today | date: 'EEEE'}},<!--一周的星期几-->
+				星期简写：{{today | date: 'EEE'}}<!--星期简写-->
+			</p>
+			<p>
+				Hour:
+				24h:{{today | date : 'HH'}},<!--24h版的小时（两位，不足补0）-->
+				12h:{{today | date : 'hh'}},<!--12h版的小时（两位，不足补0）-->
+				{{today | date : 'H'}},<!--24h版的小时-->
+				{{today | date : 'h'}}<!--12h版的小时-->
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript" src="app/index.js"></script>
+</body>
+</html>

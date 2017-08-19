@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>依赖注入</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var A = function(){
+			getName:function(){
+				return "张三";
+			}
+		}
+
+		var B = function(aObj){
+			//B依赖于a
+			document.write(aObj.getName());
+		}
+
+		var a = new A();
+		var b = new B(a);//a注入b
+
+		//依赖注入的两种方式
+		//1、将需要的对象注入到另外一个对象中
+		//2、全局变量
+
+	</script>
+</body>
+</html>
