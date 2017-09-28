@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+
+<div ng-app="app" ng-controller="ctrl">
+	
+	<button ng-click="click1();">点击1</button>
+	<button ng-click="click2();">点击2</button>
+
+	<hr>
+	<pre>json1 = {{json1 | json}}</pre>
+	<pre>json2 = {{json2 | json}}</pre>
+</div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+<script type="text/javascript">
+	
+	angular.module('app', [])
+
+	.controller('ctrl', ['$scope', function ($scope) {
+		let jsonStr = '{"name":"liSi", "password":"321"}';
+		let jsonArray = '[{"name":"zhangSan", "password":"123"},{"name":"liSi", "password":"321"}]';
+
+		$scope.click1 = ()=>{
+
+			//angular.fromJson(json:string);将一个json字符串解析成json对象
+			let json1 = angular.fromJson(jsonStr);
+			$scope.json1 = json1;
+
+			let json2 = angular.fromJson(jsonArray);
+			$scope.json2 = json2;
+
+		}
+
+		$scope.click2 = ()=>{
+
+			//angular.toJson(json:object);将一个json对象解析成json字符串
+			let json1 = angular.toJson($scope.json1);
+			console.log(json1);
+
+			let json2 = angular.toJson($scope.json2);
+			console.log(json2);
+
+		}
+	}])
+</script>
+</body>
+</html>

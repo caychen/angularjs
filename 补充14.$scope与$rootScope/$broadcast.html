@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app">
+
+	<div ng-controller="parentCtrl">
+
+		<button ng-click="broadcast();">父scope发布事件</button>
+		<br/><br/>
+		<div ng-controller="childCtrl1">
+			<button ng-click="off()">子scope1取消订阅</button>
+		</div>
+		<div ng-controller="childCtrl2">
+			
+		</div>
+
+	</div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+		angular.module('app', [])
+
+		.controller('parentCtrl', ['$scope', function ($scope) {
+
+			//父scope自上而下发布事件，凡是子scope监听该事件的都会接收到事件
+			$scope.broadcast = ()=>{
+				$scope.$broadcast('parentEvent', 'parent send some data');
+			}
+		}])
+
+		.controller('childCtrl1', ['$scope', function ($scope) {
+			//$on方法表示订阅(监听)一个事件，$on向listener返回一个取消订阅的方法fn，如果不需要订阅事件了，可直接使用返回值作为函数名，即fn()
+			let onEventObj = $scope.$on('parentEvent', (event, value)=>{
+				console.log(event);
+				console.log("childCtrl1接收到父scope发送的消息：" + value);
+			});
+
+			$scope.off = ()=>{
+				onEventObj();//取消订阅事件
+			}
+		}])
+
+		.controller('childCtrl2', ['$scope', function ($scope) {
+			$scope.$on('parentEvent', function(event, value){
+				console.log("childCtrl2接收到父scope发送的消息：" + value);
+			})
+		}])
+
+</script>
+</body>
+</html>

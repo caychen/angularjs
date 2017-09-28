@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+	<div ng-app="app" ng-controller="ctrl">
+		<input type="number" ng-model="age" />
+		<button ng-click="foo();">不带参数的按钮</button>
+		<button ng-click="goo(age);">带参数的按钮</button>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app', [])
+		.controller('ctrl', ['$scope', function ($scope) {
+			$scope.foo = angular.bind(self,//绑定对象，作为函数的上下文   
+				//被绑定的函数  
+				(args)=>{
+					alert("foo:this age is " + args);
+				}, 
+				//绑定的参数，可省略 。可以是单个值，也可以是对象。如果未提供参数，可以写默认值，也可以不写则underfined
+				3
+			);
+
+			$scope.goo = angular.bind(self,//绑定对象，作为函数的上下文   
+				//被绑定的函数  
+				(age)=>{
+					alert("goo:this age is " + age);
+				}, 
+				//绑定的参数，可省略 。如果提供参数，要么是定值，要么是函数传过来的参数。
+			);
+		}]);
+
+	</script>
+</body>
+</html>

@@ -98,11 +98,11 @@ angular.module('app', [])
 			console.log("directive2 compile...");
 
 			return {
-				//表示在编译阶段之后，指令连接到子元素之前运行
+				//表示在编译阶段之后，指令链接到子元素之前运行
 				pre: function(){
 					console.log("directive2 compile preLink...");
 				},
-				//表示在所有子元素指令都连接之后才运行
+				//表示在所有子元素指令都链接之后才运行
 				post: function(){
 					console.log("directive2 compile postLink...");
 				}

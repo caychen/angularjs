@@ -1,0 +1,8 @@
+$cacheFactory.Cache 可以用来进行数据传递。
+其方法有以下几个:
+	put(key, value);	在缓存对象中插入一个键值对(key,value)。
+	get(key);			在缓存对象中通过指定key获取对应的值。
+	remove(key);		在缓存对象中通过指定key删除对应的值。
+	removeAll();		删除缓存对象中所有的键值对。
+	destroy();			销毁这个缓存对象。
+	info();				返回关于该cache的一些信息，包括id，size和其他一些信息等

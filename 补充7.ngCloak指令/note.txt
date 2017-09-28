@@ -1,0 +1,5 @@
+ng-cloak 指令用于在 AngularJS 应用在加载时防止 AngularJS 代码未加载完而出现的问题。
+
+AngularJS 应用在加载时，文档可能会由于AngularJS 代码未加载完而出现显示 AngularJS 代码，进而会有闪烁的效果， ng-cloak 指令是为了防止该问题的发生。
+
+另一种防止闪烁的方法是使用ng-bind。

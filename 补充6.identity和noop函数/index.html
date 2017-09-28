@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div ng-app="app" ng-controller="ctrl"></div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+<script type="text/javascript">
+	
+	angular.module('app', [])
+
+	.controller('ctrl', ['$scope', function ($scope) {
+		
+		//如果fn是个null或undefined，则直接返回param
+		let getResult1 = (fn, param)=>{
+			return (fn || angular.identity)(param);
+		}
+
+		//如果fn是个null或undefined，则直接返回undefined
+		let getResult2 = (fn, param)=>{
+			return (fn || angular.noop)(param);
+		}
+
+		let result1 = getResult1((n)=> n * 2, 2);//4
+		let null_result1 = getResult1(null, 3);//3
+		let undefined_result1 = getResult1(undefined, 6);//6
+
+		console.log(result1);
+		console.log(null_result1);
+		console.log(undefined_result1);
+
+		let result2 = getResult2((n)=> n * 2, 2);//4
+		let null_result2 = getResult2(null, 3);//undefined
+		let undefined_result2 = getResult2(undefined, 6);//undefined
+
+		console.log(result2);
+		console.log(null_result2);
+		console.log(undefined_result2);
+
+	}])
+</script>
+</body>
+</html>

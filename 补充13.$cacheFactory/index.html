@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app">
+
+	<div ng-controller="ctrl1"></div>
+	<div ng-controller="ctrl2">
+		{{name}}<br/>
+		{{gender}}<br/>
+		{{user.name}} ==> {{user.age}}
+
+	</div>
+
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+	
+	angular.module('app', [])
+
+	.controller('ctrl1', ['$scope', '$cacheFactory', function($scope, $cacheFactory) {
+		let cache = $cacheFactory("cache001");
+
+		cache.put('name', 'Cay');
+		cache.put('gender', 'male');
+		cache.put('user', {
+			name: 'Amy',
+			age: 20
+		});
+	}])
+
+	.controller('ctrl2', ['$scope', '$cacheFactory', function($scope, $cacheFactory) {
+		let cache = $cacheFactory.get('cache001');
+		console.log(cache.info());
+		$scope.name = cache.get('name');
+		$scope.gender = cache.get('gender');
+		$scope.user = cache.get('user');
+	}]);
+</script>
+</body>
+</html>

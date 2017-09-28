@@ -8,4 +8,5 @@ controller && controllerAs && require
 	require可以将其他指令传递给自己
 		directiveName：通过驼峰法的命名指定了控制器应该带有哪一条指令，默认会从同一个元素上的指令
 		^directiveName：在父级查找指令
-		?directiveName：表示指令是可选的，如果找不到，不需要抛出异常
+		?directiveName：表示指令是可选的，如果找不到，不需要抛出异常，则使用空函数
+		?^directiveName: 通过搜索元素的父节点来寻找所需的控制器，如果没有找到，则通过空函数。

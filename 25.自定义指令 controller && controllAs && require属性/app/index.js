@@ -39,7 +39,7 @@ angular.module('app', [])
 		restrict:'EACM',
 		template:'<button>添加</button>',
 		replace:true,
-		require:'^bookList',//因为book-add标签在bookList内部，所以需要添加^
+		require:'?^bookList',//因为book-add标签在bookList内部，所以需要添加^
 		link:function(scope, element, attrs, bookListController){
 			element.on('click', bookListController.insertBook);
 		}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div ng-app="app" ng-controller="ctrl">
+		<div>
+			<label>Name: <input type="text" ng-model="user1.name"></label>
+			<label>Age: <input type="number" ng-model="user1.age"></label>
+		</div>
+		<hr />
+		<div>
+			<label>Name: <input type="text" ng-model="user2.name"></label>
+			<label>Age: <input type="number" ng-model="user2.age"></label>
+		</div>
+
+		<button ng-click="compare();">Angular-compare</button>
+
+		<pre>{{user1 | json}}</pre>
+		<pre>{{user2 | json}}</pre>
+
+		<br>
+		<br>
+		result: {{result}}
+
+	</div>
+	
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app', [])
+
+		.controller('ctrl', ['$scope', function ($scope) {
+			$scope.user1 = {};
+			$scope.user2 = {};
+
+			$scope.compare = ()=>{
+				$scope.result = angular.equals($scope.user1, $scope.user2);
+			}
+
+		}])
+
+	</script>
+</body>
+</html>

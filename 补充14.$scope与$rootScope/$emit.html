@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app">
+
+	<div ng-controller="rootCtrl">
+		<br/><br/>
+		<div ng-controller="parentCtrl">
+			<button ng-click="on();">订阅子scope事件</button>
+			<button ng-click="off();">取消订阅子scope事件</button>
+			<br/><br/>
+			<div ng-controller="childCtrl">
+				<button ng-click="emit()">子scope1发布事件</button>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+
+	angular.module('app', [])
+
+	.controller('rootCtrl', ['$scope', function ($scope) {
+		$scope.$on('child1Event', (event, value) =>{
+			let {from, data:{user:{age,name}}} = value;
+			console.log('祖先scope接收到从' + from + "发生的消息：" + '姓名是' + name + ",年龄是" + age);
+		});
+	}])
+	
+	.controller('parentCtrl', ['$scope', function ($scope) {
+		let childEventObj = undefined;
+
+		//一开始的时候rootCtrl能接收到childCtrl发布的事件，当parentCtrl订阅后，阻止事件继续向上发布，则rootCtrl接收不到事件，现在只能parentCtrl能接收到事件；一旦parentCtrl取消订阅后，rootCtrl又能正常接受到childCtrl发布的事件了
+		$scope.off = ()=>{
+			(childEventObj || angular.identity)();
+		}
+
+		$scope.on = ()=>{
+			childEventObj = $scope.$on('child1Event', (event, value)=>{
+				let {from, data:{user:{age,name}}} = value;
+				console.log('父scope接收到从' + from + "发生的消息：" + '姓名是' + name + ",年龄是" + age);
+
+				//阻止事件继续向上发布
+				event.stopPropagation();
+			});
+		}
+
+	}])
+
+	.controller('childCtrl', ['$scope', function ($scope) {
+		$scope.emit = ()=>{
+			$scope.$emit('child1Event', {
+				from:'child1',
+				data:{
+					user:{
+						name:'Cay',
+						age:20
+					}
+				}
+			});
+		}
+	}])
+
+
+</script>
+</body>
+</html>

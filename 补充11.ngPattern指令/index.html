@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	<form name="form">
+		<input type="text" ng-model="regExp" />
+		<br/>
+		<!-- 指定该input要遵循某个正则表达式的格式规则 -->
+		<input type="text" ng-model="value" name="input" ng-pattern="regExp" />
+		<br/>
+		{{form.input.$valid}}<br/>
+		{{value}}
+	</form>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+	<script type="text/javascript">
+		angular.module('app', [])
+
+		.controller('ctrl', ['$scope', function ($scope) {
+			$scope.regExp = '\\d+';
+		}])
+	</script>
+</body>
+</html>

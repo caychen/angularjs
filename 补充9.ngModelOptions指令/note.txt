@@ -1,0 +1,10 @@
+ng-model-options 指令绑定了 HTML 表单元素到 scope 变量中
+你可以指定绑定数据触发的时间，或者指定等待多少毫秒，参数设置可以参考以下说明。
+
+
+option	指定了绑定数据的规则，规则如下:
+		{updateOn: 'event'} :规则指定事件发生后绑定数据
+		{debounce : 1000} :规定等待多少毫秒后绑定数据
+		{allowInvalid : true|false} :规定是否需要验证后绑定数据
+		{getterSetter : true|false} :规定是否作为 getters/setters 绑定到模型
+		{timezone : '0100'} :规则是否使用时区

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+
+	<select ng-model="id" ng-options="user.id as user.name for user in users"></select>
+	{{id}}
+	
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+	
+	angular.module('app', [])
+
+	.controller('ctrl', ['$scope', function ($scope) {
+		$scope.users = [{
+			name:'Cay',
+			id:1
+		},{
+			name:'Amy',
+			id:2
+		},{
+			name:'Kitty',
+			id:3
+		}];
+	}])
+</script>
+</body>
+</html>

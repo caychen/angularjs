@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+	
+	<div ng-app="app" ng-controller="ctrl">
+		<button ng-click="click();">点击</button>
+	</div>
+
+	<script type="text/javascript" src="../angular/angular-1.6.5.min.js"></script>
+	<script type="text/javascript">
+		
+		angular.module('app', [])
+
+		.controller('ctrl', ['$scope', function ($scope) {
+			$scope.boy = {
+				love:{
+					lover(){
+						console.log('boy love lover...');
+					}
+				},
+				eat(){
+					console.log('boy eat...');
+				},
+				play(){
+					console.log('boy play...');
+				}
+			};
+			$scope.girl = {
+				dance(){
+					console.log('girl dance...');
+				},
+				eat(){
+					console.log('girl eat...');
+				}
+			};
+
+			$scope.child = {};
+
+
+			$scope.click = ()=>{
+
+				//将boy和girl的属性值扩展到child中，如果sources中有多个同样的属性值，则后面的把前面的覆盖掉
+				angular.extend($scope.child, $scope.boy, $scope.girl);
+
+				$scope.child.dance();//girl dance...
+
+				//boy和girl对象中都有eat属性，则在extend的时候，girl对象在后边，则child扩展的eat属性来自girl对象
+				$scope.child.eat();//girl eat...
+
+				//修改boy对象的love属性对象中的lover属性
+				$scope.child.love.lover = ()=>{
+					console.log('child love lover...');
+				}
+
+				$scope.child.play = ()=>{
+					console.log('child play...');
+				}
+
+				//extend不影响函数，只影响引用对象
+				$scope.child.play();//child play...
+				$scope.boy.play();//boy play...
+
+				//因为extend不是深拷贝，boy中的love对象与child的love对象引用的其实是同一个对象
+				$scope.child.love.lover();//child love lover...
+				$scope.boy.love.lover();//child love lover...
+			}
+
+
+
+
+		}])
+
+	</script>
+</body>
+</html>

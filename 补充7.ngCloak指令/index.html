@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	<span ng-cloak>{{name}}</span>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+	angular.module('app', [])
+
+	.controller('ctrl', ['$scope', function ($scope) {
+		$scope.name = "Cay";
+	}])
+
+</script>
+</body>
+</html>

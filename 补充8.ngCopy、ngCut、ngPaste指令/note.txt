@@ -1,0 +1,8 @@
+ng-copy 指令用于告诉 AngularJS 在 HTML 元素文本被拷贝时要执行的操作。
+ng-copy 指令不会覆盖元素的原始 oncopy 事件, 事件触发时，ng-copy 表达式与原始的 oncopy 事件将都会执行。
+
+ng-cut 指令用于告诉 AngularJS 在剪切 HTML 元素的文本时需要执行的操作。
+ng-cut 指令指令不会覆盖元素的原始 oncut 事件, 事件触发时，ng-cut 表达式与原始的 oncut 事件将都会执行。
+
+ng-paste 指令用于告诉 AngularJS 文本在 HTML 元素上粘贴时需要执行的操作。
+ng-paste 指令不会覆盖元素的原生 onpaste 事件, 事件触发时，ng-paste 表达式与原生的 onpaste 事件将都会执行。

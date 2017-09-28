@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	{{name}}
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+	angular.module('app', [])
+
+	//$rootScope是万域起源，是所有$scope的最终祖先。凡是在$rootScope定义的变量都能在所有的$scope中使用。
+	.run(['$rootScope', function($rootScope) {
+		$rootScope.name = "Cay";
+	}])
+
+	.controller('ctrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+		$scope.name = $rootScope.name;
+	}])
+
+</script>
+</body>
+</html>

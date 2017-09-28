@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+
+	<select ng-model="userId" ng-options="u.id as u.name for u in users"></select>
+
+	<div style="border: 1" ng-switch on="userId">
+		<div ng-switch-when="1">
+			<span>Cay</span>
+		</div>
+		<div ng-switch-when="2">
+			<span>Amy</span>
+		</div>
+		<div ng-switch-when="3">
+			<span>Kitty</span>
+		</div>
+	</div>
+
+<script type="text/javascript" src="../angular/angular-1.6.5.js"></script>
+<script type="text/javascript">
+	
+	angular.module('app', [])
+
+	.controller('ctrl', ['$scope', function ($scope) {
+		$scope.users = [{
+			name:'Cay',
+			id:1
+		},{
+			name:'Amy',
+			id:2
+		},{
+			name:'Kitty',
+			id:3
+		}]
+	}])
+</script>
+</body>
+</html>
